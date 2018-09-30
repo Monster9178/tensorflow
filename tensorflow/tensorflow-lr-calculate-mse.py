@@ -1,0 +1,10 @@
+pred_y = sess.run(y_, feed_dict={X: test_x})
+mse = tf.reduce_mean(tf.square(pred_y - test_y))
+print("MSE: %.4f" % sess.run(mse)) 
+
+fig, ax = plt.subplots()
+ax.scatter(test_y, pred_y)
+ax.plot([test_y.min(), test_y.max()], [test_y.min(), test_y.max()], 'k--', lw=3)
+ax.set_xlabel('Measured')
+ax.set_ylabel('Predicted')
+plt.show()
